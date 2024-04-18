@@ -35,12 +35,15 @@ class Vector:
         self.x = x
         self.y = y
 
+    # In case one chooses not to implement both __repr__ and __str__, implement only __repr__.
     def __repr__(self):
         return f'Vector({self.x!r}, {self.y!r})'
 
     def __abs__(self):
         return math.hypot(self.x, self.y)
 
+    # If __bool__ is not implemented, Python tries to invoke x.__len__(), and if that returns zero, bool() returns
+    # False. Otherwise, it returns True.
     def __bool__(self):
         return bool(abs(self))
 
@@ -49,5 +52,12 @@ class Vector:
         y = self.y + other.y
         return Vector(x, y)
 
+    # Allows multiplying a vector by a number, but not a number by a vector. This violates the commutative property of
+    # scalar multiplication.
     def __mul__(self, scalar):
         return Vector(self.x * scalar, self.y * scalar)
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()

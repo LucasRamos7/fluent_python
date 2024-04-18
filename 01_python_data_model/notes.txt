@@ -1,0 +1,5 @@
+>> Collection API
+    Every collection should implement three essential interfaces:
+        - Iterable: supports 'for', unpacking and other forms of iteration
+        - Size: supports the 'len' built-in function
+        - Container: supports the 'in' operator
